@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://cnavw4k04chwx"]
+
+[ext_resource type="Script" uid="uid://bh21r4fl0w61y" path="res://cell.gd" id="1_gwrgs"]
+[ext_resource type="Texture2D" uid="uid://boxcsppl0p6mq" path="res://cellimage.svg" id="1_yh0nt"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gwrgs"]
+radius = 33.0
+
+[node name="cell" type="Node2D" unique_id=410324655]
+script = ExtResource("1_gwrgs")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1913552636]
+scale = Vector2(0.08083517, 0.08083517)
+texture = ExtResource("1_yh0nt")
+
+[node name="clone" type="Timer" parent="." unique_id=1279900607]
+wait_time = 5.0
+autostart = true
+
+[node name="lifespan" type="Timer" parent="." unique_id=1905613208]
+wait_time = 10.0
+one_shot = true
+autostart = true
+
+[node name="init" type="Timer" parent="." unique_id=957678108]
+wait_time = 0.1
+one_shot = true
+autostart = true
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1429328748 groups=["cell"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=101455892]
+shape = SubResource("CircleShape2D_gwrgs")
+
+[connection signal="timeout" from="clone" to="." method="_on_clone_timeout"]
+[connection signal="timeout" from="lifespan" to="." method="_on_lifespan_timeout"]
+[connection signal="timeout" from="init" to="." method="_on_init_timeout"]
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

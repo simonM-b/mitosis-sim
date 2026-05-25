@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://evuh14q34v2i"]
+
+[ext_resource type="Shader" uid="uid://5auq4ks8uxdq" path="res://shader01.gdshader" id="1_c1twm"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hu2rj"]
+shader = ExtResource("1_c1twm")
+shader_parameter/bg_color = Color(0.03, 0.03, 0.07, 1)
+shader_parameter/line_color = Color(0.1, 0.1, 0.3, 1)
+shader_parameter/glow_color = Color(0.2, 0.4, 1, 1)
+shader_parameter/grid_size = 0.06
+shader_parameter/line_thickness = 0.002
+shader_parameter/scroll_speed = 0.06
+shader_parameter/motion_strength = 0.007
+shader_parameter/motion_speed1 = 0.03
+shader_parameter/motion_speed2 = 0.015
+
+[node name="ColorRect" type="ColorRect" unique_id=190862189]
+material = SubResource("ShaderMaterial_hu2rj")
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1152.0
+offset_top = -648.0
+offset_right = 1152.0
+offset_bottom = 648.0
+grow_horizontal = 2
+grow_vertical = 2
