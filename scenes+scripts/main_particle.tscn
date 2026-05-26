@@ -1,3 +1,35 @@
 [gd_scene format=3 uid="uid://b1u7xfbubiejc"]
 
+[ext_resource type="Script" uid="uid://dhq0ad2n6ap6d" path="res://scenes+scripts/main_particle.gd" id="1_1sdnt"]
+[ext_resource type="Texture2D" uid="uid://boxcsppl0p6mq" path="res://images/cellimage.svg" id="1_v7sqn"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_2v0yu"]
+particle_flag_disable_z = true
+gravity = Vector3(0, 0, 0)
+scale_min = 0.03
+scale_max = 0.04
+hue_variation_min = -0.3
+hue_variation_max = 0.29999998
+collision_mode = 1
+collision_friction = 0.0
+collision_bounce = 0.3
+collision_use_scale = true
+
 [node name="main particle" type="Node2D" unique_id=761368187]
+script = ExtResource("1_1sdnt")
+
+[node name="GPUParticles2D2" type="GPUParticles2D" parent="." unique_id=1737206132]
+emitting = false
+amount = 100
+texture = ExtResource("1_v7sqn")
+lifetime = 3.5
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_2v0yu")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1514221078]
+
+[node name="move positions" type="Timer" parent="." unique_id=1093682925]
+wait_time = 2.0
+autostart = true
+
+[connection signal="timeout" from="move positions" to="." method="_on_move_positions_timeout"]
