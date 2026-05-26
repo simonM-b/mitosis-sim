@@ -1,18 +1,18 @@
 [gd_scene format=3 uid="uid://cnavw4k04chwx"]
 
-[ext_resource type="Script" uid="uid://bh21r4fl0w61y" path="res://cell.gd" id="1_gwrgs"]
-[ext_resource type="Texture2D" uid="uid://boxcsppl0p6mq" path="res://cellimage.svg" id="1_yh0nt"]
+[ext_resource type="Script" uid="uid://bh21r4fl0w61y" path="res://scenes+scripts/cell.gd" id="1_k32v7"]
+[ext_resource type="Texture2D" uid="uid://boxcsppl0p6mq" path="res://images/cellimage.svg" id="2_6fu6k"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gwrgs"]
 radius = 33.0
 
 [node name="cell" type="Node2D" unique_id=410324655]
 modulate = Color(1, 1, 1, 0)
-script = ExtResource("1_gwrgs")
+script = ExtResource("1_k32v7")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1913552636]
 scale = Vector2(0.08083517, 0.08083517)
-texture = ExtResource("1_yh0nt")
+texture = ExtResource("2_6fu6k")
 
 [node name="clone" type="Timer" parent="." unique_id=1279900607]
 wait_time = 5.0
