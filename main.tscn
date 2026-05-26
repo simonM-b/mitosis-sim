@@ -1,7 +1,9 @@
 [gd_scene format=3 uid="uid://cqow47bch5ocs"]
 
 [ext_resource type="Script" uid="uid://crtdv5djku0ij" path="res://main.gd" id="1_ig7tw"]
-[ext_resource type="Script" uid="uid://bgjib12f2c0o3" path="res://cells.gd" id="2_0xm2m"]
+[ext_resource type="Script" uid="uid://b1fayhcx4kdi4" path="res://fps.gd" id="3_h2yge"]
+[ext_resource type="Script" uid="uid://cdr7eh1xqxc3j" path="res://population.gd" id="4_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://cnavw4k04chwx" path="res://cell.tscn" id="5_lquwl"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0xm2m"]
 radius = 42.755116
@@ -9,95 +11,330 @@ radius = 42.755116
 [node name="main" type="Node2D" unique_id=1892815370]
 script = ExtResource("1_ig7tw")
 
+[node name="Label" type="Label" parent="." unique_id=2044551668]
+visible = false
+offset_left = -1723.0
+offset_top = -982.0
+offset_right = 2849.0
+offset_bottom = 1606.0
+theme_override_font_sizes/font_size = 1900
+text = "S O S"
+
 [node name="cells" type="Node2D" parent="." unique_id=1720092737]
-script = ExtResource("2_0xm2m")
+
+[node name="cell" parent="cells" unique_id=410324655 instance=ExtResource("5_lquwl")]
+position = Vector2(-1536, 917)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1203224922]
 position = Vector2(576, 324)
-zoom = Vector2(0.5, 0.5)
+zoom = Vector2(0.25, 0.25)
 
 [node name="grow fast" type="Area2D" parent="." unique_id=1790994218 groups=["fastGrowth"]]
-position = Vector2(268, 101)
+position = Vector2(-882, -183)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="grow fast" unique_id=119872891]
 shape = SubResource("CircleShape2D_0xm2m")
 
-[node name="grow fast11" type="Area2D" parent="." unique_id=835668218 groups=["fastGrowth"]]
-position = Vector2(373, 59)
+[node name="grow fast2" type="Area2D" parent="." unique_id=1339318000 groups=["fastGrowth"]]
+position = Vector2(-1053, -229)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="grow fast11" unique_id=594270549]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="grow fast2" unique_id=1671551339]
 shape = SubResource("CircleShape2D_0xm2m")
 
-[node name="grow fast2" type="Area2D" parent="." unique_id=1015939606 groups=["fastGrowth"]]
-position = Vector2(194, 179)
+[node name="grow fast3" type="Area2D" parent="." unique_id=1590022836 groups=["fastGrowth"]]
+position = Vector2(-1261, -227)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="grow fast2" unique_id=1824904640]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="grow fast3" unique_id=1829422198]
 shape = SubResource("CircleShape2D_0xm2m")
 
-[node name="grow fast3" type="Area2D" parent="." unique_id=916167652 groups=["fastGrowth"]]
-position = Vector2(169, 254)
+[node name="grow fast4" type="Area2D" parent="." unique_id=632520267 groups=["fastGrowth"]]
+position = Vector2(-1438, -148)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="grow fast3" unique_id=1671659480]
-position = Vector2(342, -272)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="grow fast4" unique_id=1494073189]
 shape = SubResource("CircleShape2D_0xm2m")
 
-[node name="grow fast4" type="Area2D" parent="." unique_id=1092810363 groups=["fastGrowth"]]
-position = Vector2(225, 308)
+[node name="grow fast5" type="Area2D" parent="." unique_id=270267244 groups=["fastGrowth"]]
+position = Vector2(-1523, -12)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="grow fast4" unique_id=400070164]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="grow fast5" unique_id=482167022]
 shape = SubResource("CircleShape2D_0xm2m")
 
-[node name="grow fast5" type="Area2D" parent="." unique_id=961302994 groups=["fastGrowth"]]
-position = Vector2(278, 366)
+[node name="grow fast6" type="Area2D" parent="." unique_id=723466722 groups=["fastGrowth"]]
+position = Vector2(-1473, 165)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="grow fast5" unique_id=995445363]
-position = Vector2(-464, -72)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="grow fast6" unique_id=1905612979]
 shape = SubResource("CircleShape2D_0xm2m")
 
-[node name="grow fast6" type="Area2D" parent="." unique_id=9813427 groups=["fastGrowth"]]
-position = Vector2(328, 429)
+[node name="grow fast7" type="Area2D" parent="." unique_id=110769068 groups=["fastGrowth"]]
+position = Vector2(-1339, 285)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="grow fast6" unique_id=1891542678]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="grow fast7" unique_id=1519912080]
 shape = SubResource("CircleShape2D_0xm2m")
 
-[node name="grow fast7" type="Area2D" parent="." unique_id=1626172409 groups=["fastGrowth"]]
-position = Vector2(680, -82)
+[node name="grow fast8" type="Area2D" parent="." unique_id=2087072953 groups=["fastGrowth"]]
+position = Vector2(-1151, 377)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="grow fast7" unique_id=1630074841]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="grow fast8" unique_id=47605882]
 shape = SubResource("CircleShape2D_0xm2m")
 
-[node name="grow fast12" type="Area2D" parent="." unique_id=208423165 groups=["fastGrowth"]]
-position = Vector2(1088, -86)
+[node name="grow fast9" type="Area2D" parent="." unique_id=1933425802 groups=["fastGrowth"]]
+position = Vector2(-1000, 469)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="grow fast12" unique_id=1805201824]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="grow fast9" unique_id=692846672]
 shape = SubResource("CircleShape2D_0xm2m")
 
-[node name="grow fast13" type="Area2D" parent="." unique_id=525004584 groups=["fastGrowth"]]
-position = Vector2(1319, -35)
+[node name="grow fast10" type="Area2D" parent="." unique_id=1311536275 groups=["fastGrowth"]]
+position = Vector2(-888, 616)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="grow fast13" unique_id=2086356064]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="grow fast10" unique_id=1158693143]
 shape = SubResource("CircleShape2D_0xm2m")
 
-[node name="grow fast14" type="Area2D" parent="." unique_id=1930492852 groups=["fastGrowth"]]
-position = Vector2(929, -116)
+[node name="grow fast11" type="Area2D" parent="." unique_id=1789740640 groups=["fastGrowth"]]
+position = Vector2(-914, 785)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="grow fast14" unique_id=69983666]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="grow fast11" unique_id=1732461805]
 shape = SubResource("CircleShape2D_0xm2m")
 
-[node name="grow fast8" type="Area2D" parent="." unique_id=1130679910 groups=["fastGrowth"]]
-position = Vector2(232, 536)
+[node name="grow fast12" type="Area2D" parent="." unique_id=1040858205 groups=["fastGrowth"]]
+position = Vector2(-1028, 947)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="grow fast8" unique_id=425761273]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="grow fast12" unique_id=634570803]
 shape = SubResource("CircleShape2D_0xm2m")
 
-[node name="grow fast9" type="Area2D" parent="." unique_id=880006878 groups=["fastGrowth"]]
-position = Vector2(92, 494)
+[node name="grow fast13" type="Area2D" parent="." unique_id=2024332926 groups=["fastGrowth"]]
+position = Vector2(-1183, 975)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="grow fast9" unique_id=416638629]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="grow fast13" unique_id=1144722831]
 shape = SubResource("CircleShape2D_0xm2m")
 
-[node name="grow fast10" type="Area2D" parent="." unique_id=808517953 groups=["fastGrowth"]]
-position = Vector2(-35, 407)
+[node name="grow fast14" type="Area2D" parent="." unique_id=1310134326 groups=["fastGrowth"]]
+position = Vector2(-1376, 962)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="grow fast10" unique_id=862389464]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="grow fast14" unique_id=1482589344]
 shape = SubResource("CircleShape2D_0xm2m")
+
+[node name="grow fast15" type="Area2D" parent="." unique_id=1099317161 groups=["fastGrowth"]]
+position = Vector2(-1542, 916)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="grow fast15" unique_id=516305489]
+shape = SubResource("CircleShape2D_0xm2m")
+
+[node name="grow fast34" type="Area2D" parent="." unique_id=685048667 groups=["fastGrowth"]]
+position = Vector2(2643, -183)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="grow fast34" unique_id=608659070]
+shape = SubResource("CircleShape2D_0xm2m")
+
+[node name="grow fast35" type="Area2D" parent="." unique_id=279239058 groups=["fastGrowth"]]
+position = Vector2(2472, -229)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="grow fast35" unique_id=1018510702]
+shape = SubResource("CircleShape2D_0xm2m")
+
+[node name="grow fast36" type="Area2D" parent="." unique_id=840097189 groups=["fastGrowth"]]
+position = Vector2(2264, -227)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="grow fast36" unique_id=1732463920]
+shape = SubResource("CircleShape2D_0xm2m")
+
+[node name="grow fast37" type="Area2D" parent="." unique_id=401577918 groups=["fastGrowth"]]
+position = Vector2(2087, -148)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="grow fast37" unique_id=1248881718]
+shape = SubResource("CircleShape2D_0xm2m")
+
+[node name="grow fast38" type="Area2D" parent="." unique_id=1817947451 groups=["fastGrowth"]]
+position = Vector2(2002, -12)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="grow fast38" unique_id=511249435]
+shape = SubResource("CircleShape2D_0xm2m")
+
+[node name="grow fast39" type="Area2D" parent="." unique_id=1112571716 groups=["fastGrowth"]]
+position = Vector2(2052, 165)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="grow fast39" unique_id=1398743901]
+shape = SubResource("CircleShape2D_0xm2m")
+
+[node name="grow fast40" type="Area2D" parent="." unique_id=1981402245 groups=["fastGrowth"]]
+position = Vector2(2186, 285)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="grow fast40" unique_id=1904513048]
+shape = SubResource("CircleShape2D_0xm2m")
+
+[node name="grow fast41" type="Area2D" parent="." unique_id=1548832026 groups=["fastGrowth"]]
+position = Vector2(2374, 377)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="grow fast41" unique_id=478360554]
+shape = SubResource("CircleShape2D_0xm2m")
+
+[node name="grow fast42" type="Area2D" parent="." unique_id=843503566 groups=["fastGrowth"]]
+position = Vector2(2525, 469)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="grow fast42" unique_id=51915369]
+shape = SubResource("CircleShape2D_0xm2m")
+
+[node name="grow fast43" type="Area2D" parent="." unique_id=2017517095 groups=["fastGrowth"]]
+position = Vector2(2637, 616)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="grow fast43" unique_id=545355786]
+shape = SubResource("CircleShape2D_0xm2m")
+
+[node name="grow fast44" type="Area2D" parent="." unique_id=1267178943 groups=["fastGrowth"]]
+position = Vector2(2611, 785)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="grow fast44" unique_id=727984015]
+shape = SubResource("CircleShape2D_0xm2m")
+
+[node name="grow fast45" type="Area2D" parent="." unique_id=532295875 groups=["fastGrowth"]]
+position = Vector2(2497, 947)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="grow fast45" unique_id=1098954059]
+shape = SubResource("CircleShape2D_0xm2m")
+
+[node name="grow fast46" type="Area2D" parent="." unique_id=1545975256 groups=["fastGrowth"]]
+position = Vector2(2342, 975)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="grow fast46" unique_id=985245996]
+shape = SubResource("CircleShape2D_0xm2m")
+
+[node name="grow fast47" type="Area2D" parent="." unique_id=1879626870 groups=["fastGrowth"]]
+position = Vector2(2149, 962)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="grow fast47" unique_id=971207229]
+shape = SubResource("CircleShape2D_0xm2m")
+
+[node name="grow fast48" type="Area2D" parent="." unique_id=1102427706 groups=["fastGrowth"]]
+position = Vector2(1983, 916)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="grow fast48" unique_id=517168254]
+shape = SubResource("CircleShape2D_0xm2m")
+
+[node name="grow fast16" type="Area2D" parent="." unique_id=171544179 groups=["fastGrowth"]]
+position = Vector2(572, -244)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="grow fast16" unique_id=1904647756]
+shape = SubResource("CircleShape2D_0xm2m")
+
+[node name="grow fast17" type="Area2D" parent="." unique_id=760827685 groups=["fastGrowth"]]
+position = Vector2(419, -224)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="grow fast17" unique_id=1529407590]
+shape = SubResource("CircleShape2D_0xm2m")
+
+[node name="grow fast18" type="Area2D" parent="." unique_id=1270031014 groups=["fastGrowth"]]
+position = Vector2(257, -152)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="grow fast18" unique_id=896040012]
+shape = SubResource("CircleShape2D_0xm2m")
+
+[node name="grow fast19" type="Area2D" parent="." unique_id=1414692891 groups=["fastGrowth"]]
+position = Vector2(132, -8)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="grow fast19" unique_id=478746767]
+shape = SubResource("CircleShape2D_0xm2m")
+
+[node name="grow fast20" type="Area2D" parent="." unique_id=1096814213 groups=["fastGrowth"]]
+position = Vector2(53, 182)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="grow fast20" unique_id=1999371092]
+shape = SubResource("CircleShape2D_0xm2m")
+
+[node name="grow fast21" type="Area2D" parent="." unique_id=487312320 groups=["fastGrowth"]]
+position = Vector2(53, 396)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="grow fast21" unique_id=519100898]
+shape = SubResource("CircleShape2D_0xm2m")
+
+[node name="grow fast22" type="Area2D" parent="." unique_id=2134583545 groups=["fastGrowth"]]
+position = Vector2(73, 613)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="grow fast22" unique_id=1606912519]
+shape = SubResource("CircleShape2D_0xm2m")
+
+[node name="grow fast23" type="Area2D" parent="." unique_id=1542379134 groups=["fastGrowth"]]
+position = Vector2(145, 779)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="grow fast23" unique_id=1794167222]
+shape = SubResource("CircleShape2D_0xm2m")
+
+[node name="grow fast24" type="Area2D" parent="." unique_id=321030065 groups=["fastGrowth"]]
+position = Vector2(285, 919)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="grow fast24" unique_id=1085714664]
+shape = SubResource("CircleShape2D_0xm2m")
+
+[node name="grow fast25" type="Area2D" parent="." unique_id=1832226551 groups=["fastGrowth"]]
+position = Vector2(445, 980)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="grow fast25" unique_id=1516109434]
+shape = SubResource("CircleShape2D_0xm2m")
+
+[node name="grow fast26" type="Area2D" parent="." unique_id=613763229 groups=["fastGrowth"]]
+position = Vector2(649, 984)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="grow fast26" unique_id=465527483]
+shape = SubResource("CircleShape2D_0xm2m")
+
+[node name="grow fast27" type="Area2D" parent="." unique_id=2007280604 groups=["fastGrowth"]]
+position = Vector2(820, 918)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="grow fast27" unique_id=2128211552]
+shape = SubResource("CircleShape2D_0xm2m")
+
+[node name="grow fast28" type="Area2D" parent="." unique_id=244116600 groups=["fastGrowth"]]
+position = Vector2(964, 795)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="grow fast28" unique_id=244090257]
+shape = SubResource("CircleShape2D_0xm2m")
+
+[node name="grow fast29" type="Area2D" parent="." unique_id=558272842 groups=["fastGrowth"]]
+position = Vector2(1069, 583)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="grow fast29" unique_id=730917601]
+shape = SubResource("CircleShape2D_0xm2m")
+
+[node name="grow fast30" type="Area2D" parent="." unique_id=590044213 groups=["fastGrowth"]]
+position = Vector2(1089, 358)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="grow fast30" unique_id=660773777]
+shape = SubResource("CircleShape2D_0xm2m")
+
+[node name="grow fast31" type="Area2D" parent="." unique_id=1492963058 groups=["fastGrowth"]]
+position = Vector2(1047, 128)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="grow fast31" unique_id=2124285043]
+shape = SubResource("CircleShape2D_0xm2m")
+
+[node name="grow fast32" type="Area2D" parent="." unique_id=1090140672 groups=["fastGrowth"]]
+position = Vector2(959, -65)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="grow fast32" unique_id=66164434]
+shape = SubResource("CircleShape2D_0xm2m")
+
+[node name="grow fast33" type="Area2D" parent="." unique_id=1707292479 groups=["fastGrowth"]]
+position = Vector2(793, -198)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="grow fast33" unique_id=248258735]
+shape = SubResource("CircleShape2D_0xm2m")
+
+[node name="fps" type="Label" parent="." unique_id=1774512160]
+offset_left = -576.0
+offset_top = -324.0
+offset_right = -536.0
+offset_bottom = -236.0
+theme_override_font_sizes/font_size = 64
+script = ExtResource("3_h2yge")
+
+[node name="population" type="Label" parent="." unique_id=2062594046]
+offset_left = -576.0
+offset_top = -230.0
+offset_right = -536.0
+offset_bottom = -142.0
+theme_override_font_sizes/font_size = 64
+script = ExtResource("4_1bvp3")
+
+[node name="check children" type="Timer" parent="." unique_id=475337392]
+wait_time = 0.5
+autostart = true
+
+[connection signal="timeout" from="check children" to="." method="_on_check_children_timeout"]

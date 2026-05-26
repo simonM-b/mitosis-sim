@@ -5,27 +5,31 @@ var cellsContainer
 @onready var lifeSpanTimer: Timer = $lifespan
 @onready var cloneTimer: Timer = $clone
 
-@export var minSpawnDistance = -50
-@export var maxSpawnDistance = 50
+@export var minSpawnDistance: int = -50
+@export var maxSpawnDistance: int = 50
 
-@export var turnColorAtTimeLeft = 0.5
+@export var turnColorAtTimeLeft: float = 0.5
 var oneshotDeath = true
 
 var mutationClone
 var mutationLife
 
-@export var cloneTime = 4.0
-@export var lifeTime = 5.0
+@export var cloneTime: float = 3.0
+@export var lifeTime: float = 4.0
 
-var cloneTimeReal = 0
-var lifeTimeReal = 0
+var cloneTimeReal: float = 0
+var lifeTimeReal: float = 0
 
-var spawnQ = false
+var spawnQ: bool = false
+
+var touchingCellCount = 0
+var maxCellTouching = 30
+
+var oneTimer1 = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	GLOBAL.cellCount += 1
-	print("NEW CELL ",GLOBAL.cellCount)
+	#print("NEW CELL ",GLOBAL.cellCount)
 	randomize()
 	mutationClone = randf_range(-0.01,0.01)
 	mutationLife = randf_range(-0.01,0.01)
@@ -40,6 +44,8 @@ func _process(delta: float) -> void:
 		if spawnQ:
 			cloneCell()
 			spawnQ = false
+	if touchingCellCount >= maxCellTouching:
+		die()
 	#print("CLONE",cloneTimer.time_left)
 	#print("LIFE",lifeSpanTimer.time_left)
 
@@ -57,6 +63,9 @@ func cloneCell():
 	cell.lifeTime = lifeTime+mutationLife
 	cell.position = Vector2(position.x+randi_range(minSpawnDistance,maxSpawnDistance),position.y+randi_range(minSpawnDistance,maxSpawnDistance))
 
+func die():
+	#GLOBAL.cellCount -= 1
+	queue_free()
 
 func _on_clone_timeout() -> void:
 	if GLOBAL.cellCount < GLOBAL.maxCells:
@@ -66,16 +75,13 @@ func _on_clone_timeout() -> void:
 	
 
 func _on_lifespan_timeout() -> void:
-	queue_free()
-	GLOBAL.cellCount -= 1
+	die()
 
 func _on_init_timeout() -> void:
 	lifeSpanTimer.wait_time = lifeTime + lifeTimeReal
 	cloneTimer.wait_time = cloneTime - cloneTimeReal
 	cloneTimer.start()
 	lifeSpanTimer.start()
-	
-	
 	
 
 
@@ -84,3 +90,10 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 		#print("fast growth")
 		cloneTimeReal = cloneTime/2
 		lifeTimeReal = lifeTime/2
+	if area.is_in_group("cell"):
+		touchingCellCount += 1
+
+
+func _on_area_2d_area_exited(area: Area2D) -> void:
+	if area.is_in_group("cell"):
+		touchingCellCount -= 1
