@@ -23,7 +23,7 @@ var lifeTimeReal: float = 0
 var spawnQ: bool = false
 
 var touchingCellCount = 0
-var maxCellTouching = 30
+var maxCellTouching = 16
 
 var oneTimer1 = true
 
@@ -34,12 +34,15 @@ func _ready() -> void:
 	mutationClone = randf_range(-0.01,0.01)
 	mutationLife = randf_range(-0.01,0.01)
 	cellsContainer = get_parent()
+	var time = 0.5
+	var tween = get_tree().create_tween()
+	tween.tween_property(self, "modulate:a", 1, time)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	#print(lifeSpanTimer.time_left)
-	handelDeathColor()
+	#handelDeathColor()
 	if GLOBAL.cellCount < GLOBAL.maxCells:
 		if spawnQ:
 			cloneCell()
@@ -65,6 +68,10 @@ func cloneCell():
 
 func die():
 	#GLOBAL.cellCount -= 1
+	var time = 0.5
+	var tween = get_tree().create_tween()
+	tween.tween_property(self, "modulate:a", 0, time)
+	await get_tree().create_timer(time).timeout
 	queue_free()
 
 func _on_clone_timeout() -> void:
@@ -89,7 +96,7 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area.is_in_group("fastGrowth"):
 		#print("fast growth")
 		cloneTimeReal = cloneTime/2
-		lifeTimeReal = lifeTime/2
+		lifeTimeReal = lifeTime/8
 	if area.is_in_group("cell"):
 		touchingCellCount += 1
 
