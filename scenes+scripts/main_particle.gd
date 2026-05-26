@@ -5,7 +5,8 @@ extends Node2D
 
 @export var amountToSpawnPerLocation:float = 1
 
-var listOfPosition = [Vector2(-478.0,-225.0),
+var listOfPosition = [
+Vector2(-478.0,-225.0),
 Vector2(358.0,-122.0),
 Vector2(-211.0,233.0)]
 
@@ -14,6 +15,8 @@ var currentPosIndex = 0
 var amount: float
 var amountRatio: float
 var lifeSpan: float
+
+var count = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -31,7 +34,15 @@ func _process(delta: float) -> void:
 func wait(seconds: float) -> void:
 	await get_tree().create_timer(seconds).timeout
 
-func _on_move_positions_timeout() -> void:
+func increaseCount():
+	count += 1
+
+func start():
+	listOfPosition.append(Vector2(-478.0,-225.0))
+	nextPosition()
+
+func nextPosition():
+	increaseCount()
 	print("emit")
 	particleSpawn.position = listOfPosition[currentPosIndex]
 	
@@ -43,3 +54,6 @@ func _on_move_positions_timeout() -> void:
 		currentPosIndex += 1
 	else:
 		currentPosIndex = 0
+
+func _on_move_positions_timeout() -> void:
+	nextPosition()
