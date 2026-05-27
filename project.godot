@@ -17,12 +17,12 @@ config/icon="res://images/icon.svg"
 
 [autoload]
 
-GLOBAL="*uid://tmfpltu0cqaj"
+GLOBAL="*uid://ck7t0kf7rvhrt"
 
 [display]
 
-window/size/viewport_width=128
-window/size/viewport_height=64
+window/size/viewport_width=256
+window/size/viewport_height=128
 window/stretch/mode="viewport"
 
 [input]

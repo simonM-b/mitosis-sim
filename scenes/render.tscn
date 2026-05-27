@@ -1,11 +1,16 @@
 [gd_scene format=3 uid="uid://bwbnvoklh8sjx"]
 
 [ext_resource type="PackedScene" uid="uid://c5flkugc21hdo" path="res://scenes/main_game.tscn" id="1_6h3i2"]
+[ext_resource type="Script" uid="uid://be0xyojyoqdwu" path="res://scenes/render.gd" id="1_qul4c"]
 [ext_resource type="Script" uid="uid://cokqhj6n12hjd" path="res://scripts/fps.gd" id="2_pqwm0"]
 
 [node name="render" type="Node2D" unique_id=760240895]
+script = ExtResource("1_qul4c")
 
 [node name="main game" parent="." unique_id=1182790984 instance=ExtResource("1_6h3i2")]
+texture_filter = 1
+texture_repeat = 1
+scale = Vector2(2, 2)
 
 [node name="fps" type="Label" parent="." unique_id=1761164239]
 visible = false
@@ -13,3 +18,10 @@ offset_right = 40.0
 offset_bottom = 23.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 script = ExtResource("2_pqwm0")
+
+[node name="play pause" type="Label" parent="." unique_id=1810364659]
+offset_top = -8.0
+offset_right = 33.0
+offset_bottom = 20.0
+theme_override_font_sizes/font_size = 20
+text = ">"
