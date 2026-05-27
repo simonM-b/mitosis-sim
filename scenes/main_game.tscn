@@ -12,3 +12,8 @@ offset_right = 128.0
 offset_bottom = 64.0
 
 [node name="cellContainer" type="Node2D" parent="." unique_id=540516216]
+
+[node name="next frame" type="Timer" parent="." unique_id=1210241205]
+wait_time = 0.5
+
+[connection signal="timeout" from="next frame" to="." method="_on_next_frame_timeout"]
