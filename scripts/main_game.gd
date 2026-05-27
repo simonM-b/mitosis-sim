@@ -62,6 +62,14 @@ func nextFrame():
 	print(frame)
 	for cell in drawCellArray:
 		for NeighborCell in drawCellArray:
+			#over by one +x same y 
+			#over by -x same y
+			#over by +x +y
+			#over by +x -y 
+			#over by -x +y
+			#over by -x -y
+			#same x +y
+			#same x -y
 			if cell.position.x+1 == NeighborCell.position.x:
 				print("cell +1x over")
 			elif cell.position.x-1 == NeighborCell.position.x:
