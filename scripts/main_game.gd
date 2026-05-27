@@ -26,7 +26,7 @@ func _ready() -> void:
 	if !true: # turn this on when ur gonna share the game
 		OS.shell_open(ProjectSettings.globalize_path("res://docs/"))
 
-func _draw():
+func _draw() -> void:
 	drawBG()
 	drawCells()
 	drawCursor()
@@ -41,15 +41,30 @@ func _process(delta: float) -> void:
 	
 	
 
-func drawBG():
+func drawBG() -> void:
 	draw_rect(Rect2(0, 0, size.x, size.y), Color.GREEN)
 
-func drawCursor():
+func drawCursor() -> void:
 	draw_rect(Rect2(drawPosition.x, drawPosition.y, 1, 1), cursorColor)
 
-func drawCells():
-	for cell in drawCellArray:
-		draw_rect(Rect2(cell.x-offset, cell.y-offset, 1, 1), Color.BLACK)
+func drawCells() -> void:
+	if len(drawCellArray) > 0:
+		for cell in drawCellArray:
+			draw_rect(Rect2(cell[0].x-offset, cell[0].y-offset, 1, 1), cell[1])
+
+func addCell(pos:Vector2,color:Color) -> void:
+	var cellInfo = [pos,color]
+	if len(drawCellArray) > 0:
+		if pos != drawCellArray[0][0]:
+			drawCellArray.push_front(cellInfo)
+		else:
+			pass
+			#print("SAME LOCATION")
+	else:
+		drawCellArray.push_front(cellInfo)
+
+func duplicate1Cell(cell):
+	pass
 
 
 func wait(seconds: float) -> void:
@@ -59,19 +74,18 @@ func _input(event):
 	handleMousePress(event)
 	handleCursor(event)
 	handleKeyBinds(event)
-
+	
+func mouseSpawnCellProcedure(event) -> void:
+	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+	addCell(Vector2(roundf(event.position.x/divisionOffset),roundf(event.position.y/divisionOffset)),Color.BLACK)
+	queue_redraw()
+	
 func handleMousePress(event):
 	if event is InputEventMouseMotion:
 		if isDriagging:
-			Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
-			var x = Vector2(roundf(event.position.x/divisionOffset),roundf(event.position.y/divisionOffset))
-			drawCellArray.push_front(x)
-			queue_redraw()
+			mouseSpawnCellProcedure(event)
 	if event.is_action_pressed("click"):
-		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
-		var x = Vector2(roundf(event.position.x/divisionOffset),roundf(event.position.y/divisionOffset))
-		drawCellArray.push_front(x)
-		queue_redraw()
+		mouseSpawnCellProcedure(event)
 
 		
 
@@ -99,54 +113,53 @@ func nextFrame():
 	frame += 1
 	print("FRAME NUMB: ",frame)
 	
-	print(drawCellArray)
+	#print(drawCellArray)
 	
 	for cell in drawCellArray:
+		var cellPos = cell[0]
 		var touchingCells = 0
 		var duplicateCell = 0
 		#print("CELL x:",cell.x," Y:",cell.y)
 		for NeighborCell in drawCellArray:
-			#over by one +x same y
-			#over by -x same y
-			#over by +x +y
-			#over by +x -y
-			#over by -x +y
-			#over by -x -y
-			#same x +y
-			#same x -y
-			if cell == NeighborCell:
+			var NeighnorPos = NeighborCell[0]
+			if cellPos == NeighnorPos:
 				duplicateCell += 1
 				continue
-			elif cell.x+1 == NeighborCell.x and cell.y == NeighborCell.y: #alive cell to the right
+			elif cellPos.x+1 == NeighnorPos.x and cellPos.y == NeighnorPos.y: #alive cell to the right
 				touchingCells += 1
 				continue
-			elif cell.x-1 == NeighborCell.x and cell.y == NeighborCell.y: #alive cell to the left
+			elif cellPos.x-1 == NeighnorPos.x and cellPos.y == NeighnorPos.y: #alive cell to the left
 				touchingCells += 1
 				continue
-			elif cell.y-1 == NeighborCell.y and cell.x == NeighborCell.x: #alive cell above
+			elif cellPos.y-1 == NeighnorPos.y and cellPos.x == NeighnorPos.x: #alive cell above
 				touchingCells += 1
 				continue
-			elif cell.y+1 == NeighborCell.y and cell.x == NeighborCell.x: #alive cell left
+			elif cellPos.y+1 == NeighnorPos.y and cellPos.x == NeighnorPos.x: #alive cell left
 				touchingCells += 1
 				continue
-			elif cell.x-1 == NeighborCell.x and cell.y-1 == NeighborCell.y: #top left corner
+			elif cellPos.x-1 == NeighnorPos.x and cellPos.y-1 == NeighnorPos.y: #top left corner
 				touchingCells += 1
 				continue
-			elif cell.x+1 == NeighborCell.x and cell.y-1 == NeighborCell.y: #top right corner
+			elif cellPos.x+1 == NeighnorPos.x and cellPos.y-1 == NeighnorPos.y: #top right corner
 				touchingCells += 1
 				continue
-			elif cell.x-1 == NeighborCell.x and cell.y+1 == NeighborCell.y: #botom left corner
+			elif cellPos.x-1 == NeighnorPos.x and cellPos.y+1 == NeighnorPos.y: #botom left corner
 				touchingCells += 1
 				continue
-			elif cell.x+1 == NeighborCell.x and cell.y+1 == NeighborCell.y: #bottom right corner
+			elif cellPos.x+1 == NeighnorPos.x and cellPos.y+1 == NeighnorPos.y: #bottom right corner
 				touchingCells += 1
 				continue
 		
-		if duplicateCell > 1:
+		if duplicateCell > 1: #erases the cell if it already exists
 			drawCellArray.erase(cell)
-				
-		if touchingCells == 8:
+		
+		#rules
+		
+		if touchingCells >= 4: #if a cell has more than 4 neoghbots it dies
 			drawCellArray.erase(cell)
+		
+		if touchingCells == 1: #duplicates the cell if there is exactly one
+			duplicate1Cell(cell)
 		
 	queue_redraw()
 
