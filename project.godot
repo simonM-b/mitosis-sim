@@ -11,9 +11,9 @@ config_version=5
 [application]
 
 config/name="cell simple sim"
-run/main_scene="uid://cqow47bch5ocs"
+run/main_scene="uid://bwbnvoklh8sjx"
 config/features=PackedStringArray("4.6", "Mobile")
-config/icon="res://icon.svg"
+config/icon="res://images/icon.svg"
 
 [autoload]
 
@@ -21,7 +21,9 @@ GLOBAL="*uid://tmfpltu0cqaj"
 
 [display]
 
-window/stretch/mode="canvas_items"
+window/size/viewport_width=128
+window/size/viewport_height=64
+window/stretch/mode="viewport"
 
 [input]
 

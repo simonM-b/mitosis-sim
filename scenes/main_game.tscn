@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://c5flkugc21hdo"]
+
+[ext_resource type="Script" uid="uid://dubyxjik7rfxg" path="res://scripts/main_game.gd" id="1_72e8q"]
+
+[node name="main game" type="Node2D" unique_id=1182790984]
+script = ExtResource("1_72e8q")
+
+[node name="size" type="Control" parent="." unique_id=95253787]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 128.0
+offset_bottom = 64.0
+
+[node name="cellContainer" type="Node2D" parent="." unique_id=540516216]
