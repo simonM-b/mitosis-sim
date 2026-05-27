@@ -14,6 +14,7 @@ const STOP = "stop"
 const PLAY = "play"
 
 var playState:String = STOP
+var isDriagging = false
 
 var frame:int = 0
 var offset:int = 0
@@ -32,6 +33,12 @@ func _draw():
 
 func _process(delta: float) -> void:
 	GLOBAL.playState = playState
+	if Input.is_action_pressed("click"):
+		isDriagging = true
+	else:
+		isDriagging = false
+	
+	
 	
 
 func drawBG():
@@ -54,12 +61,19 @@ func _input(event):
 	handleKeyBinds(event)
 
 func handleMousePress(event):
-	if event is InputEventMouseButton: #handles putting cell down/into the array when there is a mouse left clikc 
-		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+	if event is InputEventMouseMotion:
+		if isDriagging:
 			Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 			var x = Vector2(roundf(event.position.x/divisionOffset),roundf(event.position.y/divisionOffset))
 			drawCellArray.push_front(x)
 			queue_redraw()
+	if event.is_action_pressed("click"):
+		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+		var x = Vector2(roundf(event.position.x/divisionOffset),roundf(event.position.y/divisionOffset))
+		drawCellArray.push_front(x)
+		queue_redraw()
+
+		
 
 func handleCursor(event):
 	if event is InputEventMouseMotion: #handles the mouse cursor 
@@ -132,7 +146,6 @@ func nextFrame():
 			drawCellArray.erase(cell)
 				
 		if touchingCells == 8:
-			await wait(0.1)
 			drawCellArray.erase(cell)
 		
 	queue_redraw()
