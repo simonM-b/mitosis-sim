@@ -1,10 +1,10 @@
-extends Node2D
+extends CharacterBody2D
 
 var oldPos:Vector2
 const linePreload = preload("res://scenes/line.tscn")
 var currentLine
 var woodMultiplier 
-var fallSpeed = 300
+var fallSpeed = 5000
 var onGround = false
 
 @onready var linesContainer = $"../../linesContainer"
@@ -26,9 +26,11 @@ func _process(delta: float) -> void:
 		oldPos = position
 		moved()
 	if global_position.y + (sprite.texture.get_height()*sprite.scale.y)/2 < wood.position.y:
-		position.y += fallSpeed*delta
+		velocity.y = fallSpeed*delta
 	else:
+		velocity.y = 0
 		onGround = true
+	move_and_slide()
 
 func _draw() -> void:
 	pass

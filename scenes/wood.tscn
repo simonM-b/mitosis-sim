@@ -11,8 +11,8 @@ fractal_gain = 0.1
 fractal_weighted_strength = 1.0
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ssiiy"]
-width = 2048
-height = 1024
+width = 1200
+height = 400
 noise = SubResource("FastNoiseLite_ssiiy")
 color_ramp = SubResource("Gradient_ssiiy")
 invert = true
