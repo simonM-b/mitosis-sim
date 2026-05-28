@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://bmuhulpjmv1m7"]
+
+[ext_resource type="Texture2D" uid="uid://cydvckkirmoy0" path="res://icon.svg" id="1_ba3qj"]
+[ext_resource type="Script" uid="uid://okehfmwm1pkn" path="res://scripts/termite.gd" id="1_whog0"]
+
+[node name="termite" type="Node2D" unique_id=563443477]
+script = ExtResource("1_whog0")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=294589785]
+texture_filter = 1
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_ba3qj")
+
+[node name="connect path" type="Timer" parent="." unique_id=1924113664]
+wait_time = 0.2
+autostart = true
+
+[connection signal="timeout" from="connect path" to="." method="_on_connect_path_timeout"]
