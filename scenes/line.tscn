@@ -1,4 +1,7 @@
 [gd_scene format=3 uid="uid://dyod5kggs5vjw"]
 
 [node name="line" type="Line2D" unique_id=182684717]
-width = 2.0
+default_color = Color(0.12156863, 0.08235294, 0.015686275, 0.5882353)
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2

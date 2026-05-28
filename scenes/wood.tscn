@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dg0a3ebmqi7on"]
 
 [ext_resource type="Script" uid="uid://b50pwhkp7ots7" path="res://scenes/wood.gd" id="1_y25wi"]
+[ext_resource type="Texture2D" uid="uid://hx5wmu5mf006" path="res://images/bark.png" id="2_d45ue"]
 
 [sub_resource type="Gradient" id="Gradient_ssiiy"]
 
@@ -19,9 +20,30 @@ invert = true
 seamless_blend_skirt = 0.119
 bump_strength = 13.3
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y25wi"]
+size = Vector2(1200, 400)
+
 [node name="wood" type="Node2D" unique_id=1485452473]
 script = ExtResource("1_y25wi")
 
 [node name="wood noise" type="Sprite2D" parent="." unique_id=1876336634]
 texture = SubResource("NoiseTexture2D_ssiiy")
 centered = false
+
+[node name="wood collition" type="Area2D" parent="." unique_id=2072506935 groups=["wood"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wood collition" unique_id=1616340743]
+position = Vector2(600, 200)
+shape = SubResource("RectangleShape2D_y25wi")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=2110809637]
+modulate = Color(1, 1, 1, 0.9607843)
+offset_top = 406.0
+offset_right = 811.9274
+offset_bottom = 2814.619
+rotation = -1.5707964
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_d45ue")
+stretch_mode = 1
+
+[connection signal="area_entered" from="wood collition" to="." method="_on_wood_collition_area_entered"]

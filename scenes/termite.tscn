@@ -3,6 +3,13 @@
 [ext_resource type="Script" uid="uid://bqb3flbyrc8vc" path="res://scenes/termite.gd" id="1_8m3yg"]
 [ext_resource type="Texture2D" uid="uid://cydvckkirmoy0" path="res://icon.svg" id="1_ba3qj"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_06t62"]
+size = Vector2(10, 1)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_06t62"]
+radius = 2.0
+height = 12.0
+
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=847729784]
 script = ExtResource("1_8m3yg")
 
@@ -12,8 +19,32 @@ scale = Vector2(0.1, 0.1)
 texture = ExtResource("1_ba3qj")
 
 [node name="switchDirection" type="Timer" parent="." unique_id=865149000]
-wait_time = 0.5
+wait_time = 2.0
 one_shot = true
 autostart = true
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1453773349]
+position = Vector2(0, 5.5)
+shape = SubResource("RectangleShape2D_06t62")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=649448914 groups=["termite"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=831990198]
+shape = SubResource("CapsuleShape2D_06t62")
+
+[node name="Label" type="Label" parent="." unique_id=1797747354]
+offset_left = 6.7770877
+offset_top = -3.8821497
+offset_right = 46.77709
+offset_bottom = 19.117851
+theme_override_font_sizes/font_size = 5
+text = ">"
+
+[node name="start drawing line" type="Timer" parent="." unique_id=939042047]
+wait_time = 0.1
+one_shot = true
+
 [connection signal="timeout" from="switchDirection" to="." method="_on_switch_direction_timeout"]
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]
+[connection signal="timeout" from="start drawing line" to="." method="_on_start_drawing_line_timeout"]
