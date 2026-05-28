@@ -63,8 +63,19 @@ func addCell(pos:Vector2,color:Color) -> void:
 	else:
 		drawCellArray.push_front(cellInfo)
 
-func duplicate1Cell(cell):
-	pass
+func duplicate1Cell(cell,neighbor):
+	var cellX = cell[0].x
+	var cellY = cell[0].y
+	
+	var neighX = neighbor[0].x
+	var neighY = neighbor[0].y
+	
+	var newX = cellX-neighX
+	var newY = cellY-neighY
+	
+	var newCellPos = Vector2(cellX+1,cellY-1)
+	addCell(newCellPos,Color.ORANGE_RED)
+	
 
 
 func wait(seconds: float) -> void:
@@ -119,9 +130,11 @@ func nextFrame():
 		var cellPos = cell[0]
 		var touchingCells = 0
 		var duplicateCell = 0
+		var neighborO
 		#print("CELL x:",cell.x," Y:",cell.y)
 		for NeighborCell in drawCellArray:
 			var NeighnorPos = NeighborCell[0]
+			neighborO = NeighborCell
 			if cellPos == NeighnorPos:
 				duplicateCell += 1
 				continue
@@ -159,7 +172,7 @@ func nextFrame():
 			drawCellArray.erase(cell)
 		
 		if touchingCells == 1: #duplicates the cell if there is exactly one
-			duplicate1Cell(cell)
+			duplicate1Cell(cell,neighborO)
 		
 	queue_redraw()
 
