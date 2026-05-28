@@ -6,9 +6,9 @@
 [node name="main game" type="Node2D" unique_id=744269800]
 
 [node name="wood" parent="." unique_id=1485452473 instance=ExtResource("3_d2op2")]
-position = Vector2(724, 553)
+position = Vector2(0, 312)
 
 [node name="linesContainer" type="Node2D" parent="." unique_id=1950723143]
 
 [node name="termite" parent="." unique_id=563443477 instance=ExtResource("1_1oj5k")]
-position = Vector2(524, 275)
+position = Vector2(622, 422)

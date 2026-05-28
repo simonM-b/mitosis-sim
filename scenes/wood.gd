@@ -13,7 +13,8 @@ func _ready() -> void:
 	noise.fractal_lacunarity = 1
 	noise.fractal_gain = 0.1
 	noise.fractal_weighted_strength = 1
-	noise.offset = Vector3(randf_range(offsetMin,offsetMax),randf_range(offsetMin,offsetMax),0)
+	noise.offset = Vector3(0,0,0)
+	#noise.offset = Vector3(randf_range(offsetMin,offsetMax),randf_range(offsetMin,offsetMax),0)
 	GLOBAL.noise = noise
 	woodNoise.texture.noise = noise
 	
