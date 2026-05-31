@@ -47,8 +47,6 @@ func _process(delta: float) -> void:
 	
 	move_and_slide()
 
-func _draw() -> void:
-	pass
 
 func moved():
 	#print("moved")
@@ -76,7 +74,11 @@ func _on_switch_direction_timeout() -> void:
 		rotation_direction = deg_to_rad(randf_range(rotationMin-50,rotationMax+50))
 	else:
 		rotation_direction = deg_to_rad(randf_range(rotationMin,rotationMax))
-	rotation = rotation_direction
+		
+	var waitRotationTime = 0.8
+	var tween = get_tree().create_tween()
+	tween.tween_property(self, "rotation", rotation_direction, waitRotationTime)
+	
 	oldTimerTime = timerTime
 
 

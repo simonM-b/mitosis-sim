@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://cxyqasawlioy3"]
+
+[ext_resource type="Script" uid="uid://bfa6sgt5g05u3" path="res://scripts/notification_panel.gd" id="1_s2f68"]
+
+[node name="notification panel" type="Panel" unique_id=1190292874]
+custom_minimum_size = Vector2(200, 80)
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+script = ExtResource("1_s2f68")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1143936289]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=952769737]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="title" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1239528001]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 13
+text = "Title"
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/VBoxContainer" unique_id=903662930]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="text" type="Label" parent="MarginContainer/VBoxContainer" unique_id=211586702]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 12
+text = "one
+two"

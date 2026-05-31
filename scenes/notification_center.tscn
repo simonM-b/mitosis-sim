@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://nw6c5sicmept"]
+
+[ext_resource type="Script" uid="uid://bpis7niue6u7v" path="res://scripts/notification_center.gd" id="1_4k325"]
+
+[node name="notification center" type="Control" unique_id=175688394]
+layout_mode = 3
+anchor_right = 0.22200002
+anchor_bottom = 1.0
+offset_right = 0.25598145
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4k325")
+
+[node name="container" type="VBoxContainer" parent="." unique_id=1097525660]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -568.0
+grow_horizontal = 2
+mouse_filter = 2

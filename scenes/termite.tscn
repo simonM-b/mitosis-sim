@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bmuhulpjmv1m7"]
 
 [ext_resource type="Script" uid="uid://bqb3flbyrc8vc" path="res://scripts/termite.gd" id="1_8m3yg"]
-[ext_resource type="Texture2D" uid="uid://cydvckkirmoy0" path="res://icon.svg" id="1_ba3qj"]
+[ext_resource type="Texture2D" uid="uid://dc630vax7ejg4" path="res://images/termite.png" id="2_06t62"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_06t62"]
 radius = 6.0
@@ -15,8 +15,9 @@ script = ExtResource("1_8m3yg")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=294589785]
 texture_filter = 1
+rotation = 1.8185441
 scale = Vector2(0.1, 0.1)
-texture = ExtResource("1_ba3qj")
+texture = ExtResource("2_06t62")
 
 [node name="switchDirection" type="Timer" parent="." unique_id=865149000]
 wait_time = 2.0
@@ -34,8 +35,8 @@ shape = SubResource("CapsuleShape2D_06t62")
 [node name="Label" type="Label" parent="." unique_id=1797747354]
 offset_left = 6.7770877
 offset_top = -3.8821497
-offset_right = 46.77709
-offset_bottom = 19.117851
+offset_right = 10.0
+offset_bottom = 4.1178503
 theme_override_font_sizes/font_size = 5
 text = ">"
 

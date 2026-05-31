@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://dtptyq1dhs4nj" path="res://scripts/main_game.gd" id="1_72e8q"]
 [ext_resource type="Texture2D" uid="uid://crmrcjxfc2ewg" path="res://images/texturize_grass_1_1024.png" id="3_0rdsr"]
 [ext_resource type="PackedScene" uid="uid://dg0a3ebmqi7on" path="res://scenes/wood.tscn" id="3_d2op2"]
-[ext_resource type="PackedScene" uid="uid://dyqc6vbmt3lm1" path="res://scenes/notif_center.tscn" id="4_0rdsr"]
+[ext_resource type="PackedScene" uid="uid://nw6c5sicmept" path="res://scenes/notification_center.tscn" id="4_0rdsr"]
 
 [node name="main game" type="Node2D" unique_id=744269800]
 script = ExtResource("1_72e8q")
@@ -27,4 +27,9 @@ stretch_mode = 1
 [node name="Node2D" type="Node2D" parent="." unique_id=599876324]
 position = Vector2(1022, 0)
 
-[node name="notif center" parent="." unique_id=246688380 instance=ExtResource("4_0rdsr")]
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1166469372]
+
+[node name="notification center" parent="CanvasLayer" unique_id=175688394 instance=ExtResource("4_0rdsr")]
+size_flags_horizontal = 4
+size_flags_vertical = 0
+mouse_filter = 2
