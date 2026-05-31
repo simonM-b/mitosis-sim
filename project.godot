@@ -17,6 +17,7 @@ config/features=PackedStringArray("4.6", "Mobile")
 [autoload]
 
 GLOBAL="*uid://bawnnowmpkq76"
+NOTIF="*uid://cu3dil4i4ib45"
 
 [display]
 

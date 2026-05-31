@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dg0a3ebmqi7on"]
 
-[ext_resource type="Script" uid="uid://b50pwhkp7ots7" path="res://scenes/wood.gd" id="1_y25wi"]
+[ext_resource type="Script" uid="uid://b50pwhkp7ots7" path="res://scripts/wood.gd" id="1_y25wi"]
 [ext_resource type="Texture2D" uid="uid://hx5wmu5mf006" path="res://images/bark.png" id="2_d45ue"]
 
 [sub_resource type="Gradient" id="Gradient_ssiiy"]
